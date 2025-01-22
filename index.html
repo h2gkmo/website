@@ -3,59 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Fathima - Portfolio</title>
+    <title>Minha Fathima | Portfolio</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         :root {
-            --primary: #2d3436;
-            --secondary: #74b9ff;
-            --text: #2d3436;
-            --bg: #ffffff;
+            --primary: #FF61D8;
+            --secondary: #6B5CE7;
+            --accent: #00D2D3;
+            --bg: #FAFAFA;
+            --text: #2D3436;
         }
 
         body {
-            color: var(--text);
             background: var(--bg);
-            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             width: 100%;
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            z-index: 1000;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
 
         .nav-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 3rem;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--text);
-            font-weight: 500;
-            transition: color 0.3s;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
         }
 
         .nav-links a:hover {
-            color: var(--secondary);
+            background: var(--primary);
+            color: white;
         }
 
-        /* Sections */
         section {
-            padding: 5rem 2rem;
             min-height: 100vh;
+            padding: 6rem 2rem 4rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -64,113 +67,120 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
-        /* Hero Section */
         #hero {
-            background: linear-gradient(45deg, var(--secondary), #a8e6cf);
-            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
+            text-align: center;
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
+            animation: fadeUp 1s ease-out;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            opacity: 0.9;
+            animation: fadeUp 1s ease-out 0.2s backwards;
         }
 
-        /* About Section */
-        .about-grid {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+            margin-top: 2rem;
         }
 
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
         .skill-card {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Interests Section */
-        .interests-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            background: linear-gradient(45deg, var(--accent), var(--secondary));
+            color: white;
         }
 
         .interest-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
         }
 
-        .interest-card:hover {
-            transform: scale(1.05);
-        }
-
-        /* Contact Section */
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
         }
 
-        .contact-form input,
-        .contact-form textarea {
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        input, textarea {
             width: 100%;
-            padding: 0.8rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 1rem;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--primary);
+            outline: none;
         }
 
         .btn {
-            background: var(--secondary);
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
             color: white;
-            padding: 0.8rem 2rem;
+            padding: 1rem 2rem;
             border: none;
-            border-radius: 4px;
+            border-radius: 30px;
+            font-size: 1rem;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
         }
 
         .btn:hover {
-            background: #0984e3;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        /* Mobile Responsive */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 flex-direction: column;
-                text-align: center;
-                padding: 1rem;
+                gap: 1rem;
             }
-
+            
             .hero-content h1 {
                 font-size: 2.5rem;
             }
 
-            section {
-                padding: 3rem 1rem;
+            .grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -189,17 +199,15 @@
     <section id="hero">
         <div class="hero-content">
             <h1>Minha Fathima</h1>
-            <p>Web Developer | Student at SOE, CUSAT</p>
+            <p>Web Developer | SOE, CUSAT</p>
         </div>
     </section>
 
     <section id="about">
         <div class="container">
-            <div class="about-grid">
-                <div>
-                    <h2>About Me</h2>
-                    <p>I'm a passionate web development student at School of Engineering, CUSAT. Currently participating in Tink Her Hack, a hackathon organized by Tin Her Hub, where I'm exploring and expanding my technical skills.</p>
-                </div>
+            <h2>About Me</h2>
+            <div class="card">
+                <p>Web development enthusiast studying at School of Engineering, CUSAT. Currently participating in Tink Her Hack hackathon by Tink Her Hub to enhance my technical skills and creativity.</p>
             </div>
         </div>
     </section>
@@ -207,13 +215,13 @@
     <section id="skills">
         <div class="container">
             <h2>Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">Leadership</div>
-                <div class="skill-card">Communication</div>
-                <div class="skill-card">Coding</div>
-                <div class="skill-card">Singing</div>
-                <div class="skill-card">Dancing</div>
-                <div class="skill-card">Painting</div>
+            <div class="grid">
+                <div class="card skill-card">Leadership</div>
+                <div class="card skill-card">Communication</div>
+                <div class="card skill-card">Coding</div>
+                <div class="card skill-card">Singing</div>
+                <div class="card skill-card">Dancing</div>
+                <div class="card skill-card">Painting</div>
             </div>
         </div>
     </section>
@@ -221,20 +229,20 @@
     <section id="interests">
         <div class="container">
             <h2>Interests</h2>
-            <div class="interests-grid">
-                <div class="interest-card">
+            <div class="grid">
+                <div class="card interest-card">
                     <h3>Coding</h3>
-                    <p>Building digital solutions</p>
+                    <p>Building digital experiences</p>
                 </div>
-                <div class="interest-card">
+                <div class="card interest-card">
                     <h3>Singing</h3>
                     <p>Expressing through music</p>
                 </div>
-                <div class="interest-card">
+                <div class="card interest-card">
                     <h3>Dancing</h3>
-                    <p>Moving to the rhythm</p>
+                    <p>Moving to rhythm</p>
                 </div>
-                <div class="interest-card">
+                <div class="card interest-card">
                     <h3>Travelling</h3>
                     <p>Exploring new places</p>
                 </div>
@@ -245,11 +253,17 @@
     <section id="contact">
         <div class="container">
             <div class="contact-form">
-                <h2>Contact Me</h2>
+                <h2>Get In Touch</h2>
                 <form id="contactForm">
-                    <input type="text" placeholder="Name" required>
-                    <input type="email" placeholder="Email" required>
-                    <textarea placeholder="Message" rows="5" required></textarea>
+                    <div class="form-group">
+                        <input type="text" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="Message" required></textarea>
+                    </div>
                     <button type="submit" class="btn">Send Message</button>
                 </form>
             </div>
@@ -257,7 +271,22 @@
     </section>
 
     <script>
-        // Smooth scrolling
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card, h2').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -267,28 +296,10 @@
             });
         });
 
-        // Form handling
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Message sent successfully!');
             this.reset();
-        });
-
-        // Scroll animation for elements
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        });
-
-        document.querySelectorAll('section > div').forEach((el) => {
-            el.style.opacity = 0;
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s ease-out';
-            observer.observe(el);
         });
     </script>
 </body>
